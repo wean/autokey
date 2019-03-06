@@ -100,7 +100,7 @@ def move_to_pat(pat: str, offset: (float, float)=None, tolerance: int=0) -> None
     """See help for click_on_pat"""
     with tempfile.NamedTemporaryFile() as f:
         subprocess.call('''
-        xwd -root -silent -display :0 | 
+        xwd -root -silent | 
         convert xwd:- png:''' + f.name, shell=True)
         loc = visgrep(f.name, pat, tolerance)
     pat_size = get_png_dim(pat)
